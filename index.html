@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Rain</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="cloud"></div>
+  </div>
+  <!-- <div class="container">
+    <div class="cloud"></div>
+  </div>
+  <div class="container">
+    <div class="cloud"></div>
+  </div> -->
+
+  <script>
+    function rain(cloud) {
+      let drop = document.createElement("div");
+      let left = Math.floor(Math.random() * 310); // Adjust as per cloud width
+      let width = Math.random() * 5;
+      let height = Math.random() * 50;
+      let duration = Math.random() * 0.5;
+
+      drop.classList.add('drop');
+      cloud.appendChild(drop);
+
+      drop.style.left = left + 'px';
+      drop.style.width = 0.5 + width + 'px';
+      drop.style.height = 0.5 + height + 'px';
+      drop.style.animationDuration = 1 + duration + 's';
+
+      setTimeout(() => {
+        drop.remove(); // Clean up drop after animation
+      }, 2000);
+    }
+
+    function generateRain() {
+      const clouds = document.querySelectorAll(".cloud");
+      clouds.forEach(cloud => {
+        rain(cloud);
+      });
+    }
+
+    // Call rain every 50ms for both clouds
+    setInterval(generateRain, 50);
+  </script>
+</body>
+
+</html>
